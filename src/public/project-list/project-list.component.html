@@ -1,0 +1,37 @@
+
+
+<div class="m-2">
+
+  <div class="row  ">
+    <div class="col-10">
+      <h2 class="">Progect List</h2>
+    </div>
+    <div class="col-2 align-end">
+      <button type="button" class="btn btn-primary " (click)="createProject()">New Project</button>
+    </div>
+
+  </div>
+  <div>
+
+    <table class="table">
+      <tr>
+        <th scope="col">Name </th>
+        <th scope="col">Description</th>
+        <th scope="col"></th>
+      </tr>
+      <tr *ngFor="let p of projects" scope="row">
+        <td>{{p.name}}</td>
+        <td>{{p.description}}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-primary mr-2" (click)="updateProject(p)">Update</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+
+  </div>
+
+</div>

@@ -1,0 +1,39 @@
+
+
+
+<div >
+
+    <div class="modal-header">
+        <h1 class="modal-title">{{mode === 'CREATE' ? 'New Project' : 'Update Project' }}</h1>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+
+            <div>
+                <label for="name"> Name</label>
+                <input id="name" formControlName="name" type="text">
+            </div>
+
+            <div>
+                <label for="description">Description </label>
+               <textarea id="description" formControlName="description" type="text"></textarea>
+            </div>
+        </form>
+        <!-- employee.component.html -->
+
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" [disabled]="!projectForm.valid || projectForm.dirty">{{ mode === 'CREATE' ? 'Save' :
+            'Update' }}</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Cancel</button>
+    </div>
+
+
+</div>
+

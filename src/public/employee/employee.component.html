@@ -1,0 +1,43 @@
+
+
+
+<div class="modal-content">
+
+    <div class="modal-header">
+        <h1 class="modal-title">{{mode === 'CREATE' ? 'New Employee' : 'Update Employee' }}</h1>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+            <div>
+                <label for="firstName">First Name</label>
+                <input id="firstName" formControlName="firstName" type="text">
+            </div>
+
+            <div>
+                <label for="lastName">Last Name </label>
+                <input id="lastName" formControlName="lastName" type="text">
+            </div>
+            <div>
+                <label for="email">Email </label>
+                <input id="email" formControlName="email" type="text">
+            </div>
+
+        </form>
+        <!-- employee.component.html -->
+
+
+    </div>
+
+    <div class="modal-footer">
+        <button type="submit" [disabled]="!employeeForm.valid || employeeForm.dirty">{{ mode === 'CREATE' ? 'Save' :
+            'Update' }}</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Close click')">Cancel</button>
+    </div>
+
+
+</div>
