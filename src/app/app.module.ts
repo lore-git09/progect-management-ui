@@ -1,39 +1,37 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module'; // Importa AppRoutingModule
+import { BrowserModule } from '@angular/platform-browser';
 
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { ProjectListComponent } from '../public/project-list/project-list.component';
+import { share } from 'rxjs';
+import { SharedModule } from 'src/shared/shared.module';
+import { HeaderComponent } from 'src/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { EmployeeListComponent } from '../public/employee/employee-list/employee-list.component';
-import { EmployeeComponent } from '../public/employee/employee.component';
-import { HomeComponent } from '../home/home.component';
-import { HeaderComponent } from '../header/header.component';
-import { RouterModule } from '@angular/router';
+import { EmployeeModule } from 'src/employee/employee.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProjectModule } from 'src/project/project.module';
+import { EmployeeListComponent } from 'src/employee/employee-list/employee-list.component';
+import { EmployeeComponent } from 'src/employee/employee/employee.component';
 
 @NgModule({
-  declarations: [  
-  
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+   
   ],
   imports: [
     BrowserModule,
-     HeaderComponent,
-    AppRoutingModule, // Aggiungi AppRoutingModule qui
-    HttpClientModule,
-    ProjectListComponent,
-    EmployeeListComponent,
-    EmployeeComponent,
-    HomeComponent,
+    AppRoutingModule,
+    HttpClientModule ,
+    EmployeeModule,
+    ProjectModule,
     FormsModule,
-    AppComponent ,// Importa il componente standalone qui
-    CommonModule ,// Aggiungi CommonModule qui
-    RouterModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    ReactiveFormsModule
 
+  ],
+  providers: [
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

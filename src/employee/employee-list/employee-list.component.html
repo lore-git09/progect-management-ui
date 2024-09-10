@@ -1,0 +1,35 @@
+
+
+<div>
+    
+    <div class="row">
+        <div class="col-10" ><h2 class="ml-3">Employee List</h2></div>
+        <div class="col-2 ">
+            <button type="button" class="btn btn-primary" (click)="createEmployee()">New Employee</button>
+        </div>
+    </div>
+    <div>
+        <table class="table mt-4">
+            <tr>
+                <th scope="col"> FirstName </th>
+                <th scope="col">LastName</th>
+                <th scope="col">Email</th>
+                <th></th>
+            </tr>
+            <tr *ngFor ="let emp of employeesList">
+                <td>{{ emp.firstName }}</td>
+                <td>{{ emp.lastName }}</td>
+                <td>{{emp.email}}</td>
+                <td>
+                    <div >
+                        <button type="button" class="btn btn-primary mr-3" (click)="updateEmployee(emp.id)">Update</button>
+                        <button type="button" class="btn btn-outline-dark mr-3" (click)="readEmployee(emp.id)">Dettaglio</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>

@@ -1,35 +1,10 @@
-import { CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
-import { ProjectDTO } from "../model/projectDTO";
-import { ProjectService } from "../service/project.service";
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-home',
-    standalone: true,
-    templateUrl: './home.component.html',
-    styleUrl: './home.component.scss',
-    imports: [CommonModule] // Aggiungi CommonModule qui
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-
-export class HomeComponent implements OnInit {
-  title = 'progect-management';
-
-
- projectList:ProjectDTO[]=[];
-  constructor(private projectService: ProjectService){
-
-  }
-  ngOnInit(): void {
-   this.getProjects();
-
-
-  }
-
-
-  getProjects(): void {
-    this.projectService.getProjects().subscribe(data => {
-      this.projectList = data;
-    });
-  }
+export class HomeComponent {
 
 }

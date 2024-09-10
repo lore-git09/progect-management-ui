@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { ProjectDTO } from "../model/projectDTO";
 import { Injectable } from "@angular/core";
-import { EmployeeDTO } from "../model/employeeDTO";
+import { ProjectDTO } from "src/models/projectDTO";
+
 
 
 @Injectable({

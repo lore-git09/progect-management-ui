@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProjectListComponent } from '../public/project-list/project-list.component';
-import { EmployeeListComponent } from '../public/employee/employee-list/employee-list.component';
-import { HomeComponent } from '../home/home.component';
+import { EmployeeListComponent } from 'src/employee/employee-list/employee-list.component';
+import { HomeComponent } from 'src/home/home.component';
+import { ProjectListComponent } from 'src/project/project-list/project-list.component';
 
-export const routes: Routes = [
+const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
-
+  {
+    path: 'employees',
+    loadChildren: () => import('../employee/employee.module').then(m => m.EmployeeModule)
+  },
+  {
+    path: 'projects',
+    loadChildren: () => import('../project/project.module').then(m => m.ProjectModule)
+  },
+ 
   { path: 'home', component: HomeComponent },
-  { path: 'projects', component: ProjectListComponent },
-  { path: 'employees', component: EmployeeListComponent },
-//   { path: 'projects/new', component: ProjectCreateComponent },
-//   { path: 'projects/:id', component: ProjectDetailComponent },
-//   { path: 'projects/:id/edit', component: ProjectEditComponent },
+  
 ];
 
 @NgModule({

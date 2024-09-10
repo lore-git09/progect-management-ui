@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { ProjectDTO } from "../model/projectDTO";
 import { Injectable } from "@angular/core";
-import { EmployeeDTO } from "../model/employeeDTO";
+import { Observable } from "rxjs";
+import { EmployeeDTO } from "src/models/employeeDTO";
+
 
 @Injectable({
     providedIn: 'root'

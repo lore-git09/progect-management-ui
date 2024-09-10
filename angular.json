@@ -3,11 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "progect-management": {
+    "project-mamangement": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style":[ "scss", "node_modules/bootstrap/dist/css/bootstrap.min.css"]
         }
       },
       "root": "",
@@ -15,11 +15,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/progect-management",
+            "outputPath": "dist/project-mamangement",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -32,12 +32,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -56,9 +51,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "buildOptimizer": false,
               "optimization": false,
+              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -67,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "progect-management:build:production"
+              "browserTarget": "project-mamangement:build:production"
             },
             "development": {
-              "buildTarget": "progect-management:build:development"
+              "browserTarget": "project-mamangement:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "progect-management:build"
+            "browserTarget": "project-mamangement:build"
           }
         },
         "test": {
@@ -104,6 +102,6 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": "5abc5cab-df40-402e-88e1-5d35ee9ef5be"
   }
 }
