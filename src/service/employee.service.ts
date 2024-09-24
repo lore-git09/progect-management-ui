@@ -25,7 +25,7 @@ import { EmployeeDTO } from "src/models/employeeDTO";
         }
 
 
-        updateEmployee(employeeId: string, updatedEmployee: EmployeeDTO): Observable<EmployeeDTO> {
+        updateEmployee(employeeId :string, updatedEmployee: EmployeeDTO): Observable<EmployeeDTO> {
           // Costruisce l'URL includendo l'ID dell'impiegato
           const url = `${this.employeesUrl}${employeeId}`;
         

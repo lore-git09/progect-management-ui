@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { catchError } from 'rxjs';
 import { EmployeeDTO } from 'src/models/employeeDTO';
 import { EmployeeService } from 'src/service/employee.service';
 
@@ -17,6 +18,8 @@ export class EmployeeComponent {
 
  public mode: string | undefined ;
  public id:any | undefined ;
+ employee! : EmployeeDTO;
+
 
   @Output() employeeOutput: EventEmitter<EmployeeDTO> = new EventEmitter();
 
@@ -45,7 +48,6 @@ export class EmployeeComponent {
       this.employeeService.findEmployee(this.id).subscribe(result=>{
      
         this.employeeForm.patchValue({
-          id: [result ? result.id : null],
         firstName:  [result  ? result.firstName : ''],
         lastName: [result  ? result.lastName : ''],
         email:  [result  ? result.email : '']
@@ -53,23 +55,45 @@ export class EmployeeComponent {
       }) 
     }
 
-    this.employeeForm = this.fb.group({
-      id: '',
-      firstName:  ['', [Validators.required]],
-      lastName:  ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]]
+    this.employeeForm = new FormGroup({
+      firstName : new FormControl ('', Validators.required),
+      lastName:   new FormControl ('', Validators.required),
+      email:  new FormControl ('',[ Validators.required, Validators.email]),
     });
    
-    console.log("mode: "+this.mode)
   }
 
 
-  onSubmit(){
-   // this.modal.close(this.employeeForm.value);
-   this.employeeService.createEmployee(this.employeeForm.value);
+  onSubmit(){ 
+   this.employee =new EmployeeDTO();
+   console.log(this.employee);
+  const formValues = this.employeeForm.value;
+
+this.employee.email = Array.isArray(formValues.email) ? formValues.email[0] : formValues.email;
+this.employee.firstName = Array.isArray(formValues.firstName) ? formValues.firstName[0] : formValues.firstName;
+this.employee.lastName = Array.isArray(formValues.lastName) ? formValues.lastName[0] : formValues.lastName;
+ 
+   if(this.mode==='CREATE'){
+
+    this.employeeService.createEmployee(this.employee).subscribe({
+
+      error(){
+    
+      }
+    });
+
+   }if(this.mode==='UPDATE'){
+  this.employeeService.updateEmployee(this.id, this.employee).subscribe({
+
+  })
+  this.ngOnInit()
+   }
+   
    
 
   }
+
+
 
   
 }

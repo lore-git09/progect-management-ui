@@ -28,7 +28,7 @@
     </div>
 
     <div *ngIf="mode != 'READ'" class="mt-3">
-        <button type="submit" [disabled]="!employeeForm.valid || !employeeForm.dirty">{{ mode === 'CREATE' ? 'Save' :
+        <button type="submit"  (click)="onSubmit()" [disabled]="!employeeForm.valid || !employeeForm.dirty">{{ mode === 'CREATE' ? 'Save' :
             'Update' }}</button>
     </div>
 

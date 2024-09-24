@@ -1,11 +1,15 @@
 
 
-export interface EmployeeDTO{
+export class EmployeeDTO{
+    
 
-    id : string;
-    firstName : string ;
-    lastName: string;
-    email : string;
+    public constructor(init?: Partial<EmployeeDTO>) {
+        Object.assign(this, init);
+    }
+    id : string = '';
+    firstName : string = '' ;
+    lastName: string = '';
+    email : string = '';
 
 
    
